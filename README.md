@@ -25,3 +25,28 @@ Express.js
 Database:
 
 SQLite
+
+## Features
+
+- Target Management
+- Subdomain Tracking
+- Technology Tracking
+- Screenshot Organization
+- Findings Management
+
+## Roadmap
+
+### Phase 1
+- Dashboard UI
+- Target CRUD
+
+### Phase 2
+- Subdomain Management
+- Technology Tracking
+
+### Phase 3
+- Findings Tracking
+
+### Phase 4
+- Authentication
+- Export Features
