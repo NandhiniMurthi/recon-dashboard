@@ -41,3 +41,24 @@ button {
 section {
     margin-top: 20px;
 }
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+button {
+    background: #0078ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
