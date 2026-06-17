@@ -15,7 +15,7 @@
     <section class="stats">
         <div class="card">
             <h3>Targets</h3>
-            <p>2</p>
+            <p id="targetCount"></p>
         </div>
 
         <div class="card">
@@ -30,19 +30,23 @@
     </section>
 
     <section>
-        <button>Add Target</button>
+        <button><div class="add-target-form">
+    <input
+        type="text"
+        id="domainInput"
+        placeholder="Enter domain"
+    >
+
+    <button id="addTargetBtn">
+        Add Target
+    </button>
+</div></button>
     </section>
 
     <section>
         <h2>Targets</h2>
 
-        <div class="target">
-            example.com - Active
-        </div>
-
-        <div class="target">
-            test.com - Pending
-        </div>
+        <div id="targetsList"></div>
     </section>
 
     <section>
