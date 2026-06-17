@@ -1,1 +1,1 @@
-// JavaScript will be added later
+console.log("Recon Dashboard loaded successfully");
