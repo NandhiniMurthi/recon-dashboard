@@ -1,9 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recon Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Recon Dashboard</h1>
+
+    <header>
+        <h1>Recon Dashboard</h1>
+    </header>
+
+    <section class="stats">
+        <div class="card">
+            <h3>Targets</h3>
+            <p>2</p>
+        </div>
+
+        <div class="card">
+            <h3>Active</h3>
+            <p>1</p>
+        </div>
+
+        <div class="card">
+            <h3>Findings</h3>
+            <p>0</p>
+        </div>
+    </section>
+
+    <section>
+        <button>Add Target</button>
+    </section>
+
+    <section>
+        <h2>Targets</h2>
+
+        <div class="target">
+            example.com - Active
+        </div>
+
+        <div class="target">
+            test.com - Pending
+        </div>
+    </section>
+
+    <section>
+        <h2>Recent Activity</h2>
+
+        <ul>
+            <li>Added example.com</li>
+            <li>Added test.com</li>
+        </ul>
+    </section>
+
+    <script src="app.js"></script>
+
 </body>
 </html>
