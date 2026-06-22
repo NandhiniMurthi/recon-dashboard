@@ -29,7 +29,7 @@ function addTarget() {
 
     targets.push({
         domain: domain,
-        status: "Active"
+        status: "status"
     });
 
     domainInput.value = "";
