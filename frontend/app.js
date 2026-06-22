@@ -69,6 +69,13 @@ function renderTargets() {
             target.domain +
             " - " +
             target.status;
+        const deleteBtn =
+        document.createElement("button");
+
+        deleteBtn.textContent =
+        "Delete";
+        div.appendChild(deleteBtn);
+
 
         targetsList.appendChild(div);
     });
