@@ -11,12 +11,16 @@ addTargetBtn.addEventListener(
 function addTarget() {
 
     const domainInput =
-        document.getElementById(
-            "domainInput"
-        );
+        document.getElementById("domainInput");
+
+    const statusInput =
+        document.getElementById("statusInput");
 
     const domain =
         domainInput.value.trim();
+
+    const status =
+        statusInput.value;
 
     if (domain === "") {
 
@@ -29,7 +33,7 @@ function addTarget() {
 
     targets.push({
         domain: domain,
-        status: "status"
+        status: status
     });
 
     domainInput.value = "";
@@ -37,28 +41,50 @@ function addTarget() {
     renderTargets();
 }
 
+function deleteTarget(index) {
+
+    targets.splice(index, 1);
+
+    renderTargets();
+}
+
 function renderTargets() {
-     const targetsList =
+
+    const targetsList =
         document.getElementById("targetsList");
 
     const targetCount =
         document.getElementById("targetCount");
 
+    const activeCount =
+        document.getElementById("activeCount");
+
     targetsList.innerHTML = "";
 
     targetCount.textContent =
         targets.length;
-    
-     if (targets.length === 0) {
 
-        targetsList.innerHTML =
-            "<p>No targets added yet</p>";
+    const activeTargets =
+        targets.filter(
+            target => target.status === "Active"
+        );
+
+    activeCount.textContent =
+        activeTargets.length;
+
+    if (targets.length === 0) {
+
+        targetsList.innerHTML = `
+            <div class="empty-state">
+                No targets added yet.
+                Add your first target.
+            </div>
+        `;
 
         return;
-
     }
 
-    targets.forEach(target => {
+    targets.forEach((target, index) => {
 
         const div =
             document.createElement("div");
@@ -68,22 +94,24 @@ function renderTargets() {
         div.textContent =
             target.domain +
             " - " +
-            target.status;
+            target.status +
+            " ";
+
         const deleteBtn =
-        document.createElement("button");
+            document.createElement("button");
 
         deleteBtn.textContent =
-        "Delete";
-        div.appendChild(deleteBtn);
+            "Delete";
+
         deleteBtn.addEventListener(
             "click",
             () => deleteTarget(index)
         );
 
+        div.appendChild(deleteBtn);
 
         targetsList.appendChild(div);
     });
-
-    
 }
+
 renderTargets();
