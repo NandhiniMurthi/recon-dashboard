@@ -69,3 +69,6 @@ button:hover {
     text-align: center;
     margin-top: 10px;
 }
+.target button {
+    margin-left: 10px;
+}
