@@ -75,6 +75,10 @@ function renderTargets() {
         deleteBtn.textContent =
         "Delete";
         div.appendChild(deleteBtn);
+        deleteBtn.addEventListener(
+            "click",
+            () => deleteTarget(index)
+        );
 
 
         targetsList.appendChild(div);
