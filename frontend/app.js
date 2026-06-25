@@ -2,6 +2,11 @@ const targets = [];
 
 const addTargetBtn =
     document.getElementById("addTargetBtn");
+const searchInput =
+    document.getElementById("searchInput");
+
+const filterStatus =
+    document.getElementById("filterStatus");
 
 addTargetBtn.addEventListener(
     "click",
