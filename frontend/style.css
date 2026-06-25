@@ -72,3 +72,19 @@ button:hover {
 .target button {
     margin-left: 10px;
 }
+.search-filter {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-filter input,
+.search-filter select {
+    padding: 10px;
+    border-radius: 6px;
+}
+
+#resultCount {
+    margin-top: 10px;
+    font-weight: bold;
+}
