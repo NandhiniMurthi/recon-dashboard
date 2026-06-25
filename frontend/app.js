@@ -12,6 +12,15 @@ addTargetBtn.addEventListener(
     "click",
     addTarget
 );
+searchInput.addEventListener(
+    "input",
+    renderTargets
+);
+
+filterStatus.addEventListener(
+    "change",
+    renderTargets
+);
 
 function addTarget() {
 
