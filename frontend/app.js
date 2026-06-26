@@ -72,6 +72,14 @@ function renderTargets() {
 
     const activeCount =
         document.getElementById("activeCount");
+    const resultCount =
+    document.getElementById("resultCount");
+
+    const searchText =
+    searchInput.value.toLowerCase();
+
+    const selectedStatus =
+    filterStatus.value;
 
     targetsList.innerHTML = "";
 
