@@ -82,6 +82,20 @@ function renderTargets() {
     filterStatus.value;
 
     targetsList.innerHTML = "";
+    const filteredTargets =
+    targets.filter(target => {
+
+        const matchesSearch =
+            target.domain
+                .toLowerCase()
+                .includes(searchText);
+
+        const matchesStatus =
+            selectedStatus === "All" ||
+            target.status === selectedStatus;
+
+        return matchesSearch && matchesStatus;
+    });
 
     targetCount.textContent =
         targets.length;
