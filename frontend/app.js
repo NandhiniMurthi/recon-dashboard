@@ -99,6 +99,8 @@ function renderTargets() {
 
     targetCount.textContent =
         targets.length;
+    resultCount.textContent =
+    `Showing ${filteredTargets.length} of ${targets.length} targets`;
 
     const activeTargets =
         targets.filter(
