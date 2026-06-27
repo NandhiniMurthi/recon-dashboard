@@ -122,7 +122,10 @@ function renderTargets() {
         return;
     }
 
-    targets.forEach((target, index) => {
+    filteredTargets.forEach((target) => {
+
+    const index =
+        targets.indexOf(target);
 
         const div =
             document.createElement("div");
