@@ -110,7 +110,7 @@ function renderTargets() {
     activeCount.textContent =
         activeTargets.length;
 
-    if (targets.length === 0) {
+    if (filteredTargets.length === 0){
 
         targetsList.innerHTML = `
             <div class="empty-state">
