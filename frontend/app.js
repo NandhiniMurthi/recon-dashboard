@@ -2,6 +2,11 @@ const targets = [];
 
 const addTargetBtn =
     document.getElementById("addTargetBtn");
+const clearTargetsBtn =
+    document.getElementById("clearTargetsBtn");
+
+const lastUpdated =
+    document.getElementById("lastUpdated");
 const searchInput =
     document.getElementById("searchInput");
 
