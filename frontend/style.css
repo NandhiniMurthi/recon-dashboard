@@ -88,3 +88,13 @@ button:hover {
     margin-top: 10px;
     font-weight: bold;
 }
+
+#clearTargetsBtn {
+    margin-top: 10px;
+    padding: 10px 15px;
+}
+
+#lastUpdated {
+    margin-top: 10px;
+    font-style: italic;
+}
