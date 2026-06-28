@@ -17,6 +17,10 @@ addTargetBtn.addEventListener(
     "click",
     addTarget
 );
+clearTargetsBtn.addEventListener(
+    "click",
+    clearTargets
+);
 searchInput.addEventListener(
     "input",
     renderTargets
