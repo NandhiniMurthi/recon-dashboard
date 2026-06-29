@@ -137,15 +137,18 @@ function renderTargets() {
         targets.indexOf(target);
 
         const div =
-            document.createElement("div");
+    document.createElement("div");
 
-        div.className = "target";
+div.className = "target";
 
-        div.textContent =
-            target.domain +
-            " - " +
-            target.status +
-            " ";
+div.innerHTML = `
+    <div class="target-info">
+        <strong>${target.domain}</strong>
+        <span class="status-badge">
+            ${target.status}
+        </span>
+    </div>
+`;
 
         const deleteBtn =
             document.createElement("button");
