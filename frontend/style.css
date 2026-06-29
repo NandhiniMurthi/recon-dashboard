@@ -98,3 +98,35 @@ button:hover {
     margin-top: 10px;
     font-style: italic;
 }
+.target {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.target-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.status-badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: #e8e8e8;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.target button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
