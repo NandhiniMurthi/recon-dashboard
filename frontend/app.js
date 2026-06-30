@@ -70,6 +70,19 @@ function deleteTarget(index) {
 
     renderTargets();
 }
+function clearTargets() {
+
+    const confirmDelete =
+        confirm("Are you sure you want to remove all targets?");
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    targets.length = 0;
+
+    renderTargets();
+}
 
 function renderTargets() {
 
