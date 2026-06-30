@@ -1,5 +1,4 @@
-const targets = [];
-
+let targets = [];
 const addTargetBtn =
     document.getElementById("addTargetBtn");
 const clearTargetsBtn =
