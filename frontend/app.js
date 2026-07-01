@@ -66,6 +66,7 @@ function addTarget() {
 function deleteTarget(index) {
 
     targets.splice(index, 1);
+    saveTargets();
 
     renderTargets();
 }
