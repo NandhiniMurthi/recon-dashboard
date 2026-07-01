@@ -69,6 +69,15 @@ function deleteTarget(index) {
 
     renderTargets();
 }
+
+function saveTargets() {
+
+    localStorage.setItem(
+        "targets",
+        JSON.stringify(targets)
+    );
+
+}
 function clearTargets() {
 
     const confirmDelete =
