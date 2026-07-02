@@ -201,5 +201,6 @@ div.innerHTML = `
         targetsList.appendChild(div);
     });
 }
+loadTargets();
 
 renderTargets();
