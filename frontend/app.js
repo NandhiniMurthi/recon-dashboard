@@ -79,6 +79,19 @@ function saveTargets() {
     );
 
 }
+function loadTargets() {
+
+    const savedTargets =
+        localStorage.getItem("targets");
+
+    if (savedTargets) {
+
+        targets =
+            JSON.parse(savedTargets);
+
+    }
+
+}
 function clearTargets() {
 
     const confirmDelete =
