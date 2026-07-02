@@ -102,6 +102,7 @@ function clearTargets() {
     }
 
     targets.length = 0;
+    saveTargets();
 
     renderTargets();
 }
