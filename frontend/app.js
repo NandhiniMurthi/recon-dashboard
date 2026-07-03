@@ -90,7 +90,15 @@ function loadTargets() {
             JSON.parse(savedTargets);
 
     }
+function updateLastUpdated() {
 
+    const now = new Date();
+
+    lastUpdated.textContent =
+        "Last Updated: " +
+        now.toLocaleString();
+
+}
 }
 function clearTargets() {
 
