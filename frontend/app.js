@@ -58,6 +58,7 @@ function addTarget() {
         status: status
     });
     saveTargets();
+    updateLastUpdated();
     domainInput.value = "";
 
     renderTargets();
