@@ -68,7 +68,7 @@ function deleteTarget(index) {
 
     targets.splice(index, 1);
     saveTargets();
-
+    updateLastUpdated();
     renderTargets();
 }
 
@@ -112,7 +112,7 @@ function clearTargets() {
 
     targets.length = 0;
     saveTargets();
-
+    updateLastUpdated();
     renderTargets();
 }
 
