@@ -50,3 +50,16 @@ SQLite
 ### Phase 4
 - Authentication
 - Export Features
+
+## Learning Objectives
+
+This project helps me strengthen my understanding of:
+
+- Software Engineering Principles
+- Full-Stack Web Development
+- JavaScript Fundamentals
+- DOM Manipulation
+- Responsive UI Design
+- Git & GitHub Workflow
+- Project Architecture
+- Industry Development Practices
