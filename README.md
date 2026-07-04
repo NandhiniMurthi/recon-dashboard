@@ -11,20 +11,20 @@ Learn full-stack development
 
 # Tech Stack
 
-Frontend:
+### Frontend:
 
-HTML
-CSS
-JavaScript
+-HTML
+-CSS
+-JavaScript
 
-Backend:
+### Backend:
 
-Node.js
-Express.js
+-Node.js
+-Express.js
 
-Database:
+### Database:
 
-SQLite
+-SQLite
 
 ## Features
 
