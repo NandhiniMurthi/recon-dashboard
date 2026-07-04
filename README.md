@@ -13,18 +13,18 @@ Learn full-stack development
 
 ### Frontend:
 
--HTML
--CSS
--JavaScript
+- HTML
+- CSS
+- JavaScript
 
 ### Backend:
 
--Node.js
--Express.js
+- Node.js
+- Express.js
 
 ### Database:
 
--SQLite
+- SQLite
 
 ## Features
 
