@@ -208,9 +208,14 @@ div.className = "target";
 div.innerHTML = `
     <div class="target-info">
         <strong>${target.domain}</strong>
+
         <span class="status-badge">
             ${target.status}
         </span>
+
+        <small>
+            Added: ${target.dateAdded}
+        </small>
     </div>
 `;
 
