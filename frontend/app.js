@@ -69,9 +69,13 @@ if (targetExists) {
 }
 
     targets.push({
-        domain: domain,
-        status: status
-    });
+    domain: domain,
+    status: status,
+    dateAdded: new Date().toLocaleString()
+});
+    targets.sort((a, b) =>
+    a.domain.localeCompare(b.domain)
+);
     saveTargets();
     updateLastUpdated();
     domainInput.value = "";
