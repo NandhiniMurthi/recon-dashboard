@@ -52,6 +52,21 @@ function addTarget() {
 
         return;
     }
+    const targetExists =
+    targets.some(
+        target =>
+            target.domain.toLowerCase() ===
+            domain.toLowerCase()
+    );
+
+if (targetExists) {
+
+    alert(
+        "Target already exists."
+    );
+
+    return;
+}
 
     targets.push({
         domain: domain,
