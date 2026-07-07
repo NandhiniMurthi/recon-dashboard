@@ -85,10 +85,18 @@ if (targetExists) {
 
 function deleteTarget(index) {
 
+    const confirmDelete =
+        confirm("Are you sure you want to delete this target?");
+
+    if (!confirmDelete) {
+        return;
+    }
+
     targets.splice(index, 1);
+
     saveTargets();
-    updateLastUpdated();
-    renderTargets();
+
+    updateUI();
 }
 
 function saveTargets() {
