@@ -6,6 +6,8 @@ const clearTargetsBtn =
 
 const lastUpdated =
     document.getElementById("lastUpdated");
+const message =
+    document.getElementById("message");
 const searchInput =
     document.getElementById("searchInput");
 
