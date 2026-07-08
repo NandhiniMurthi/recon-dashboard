@@ -81,6 +81,11 @@ if (targetExists) {
     saveTargets();
     updateLastUpdated();
     domainInput.value = "";
+    message.textContent =
+    "Target added successfully!";
+    setTimeout(() => {
+    message.textContent = "";
+    }, 3000);
 
     renderTargets();
 }
