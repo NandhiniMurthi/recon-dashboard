@@ -234,17 +234,25 @@ div.innerHTML = `
         </small>
     </div>
 `;
+        const editBtn =
+            document.createElement("button");
 
+        editBtn.textContent =
+            "Edit";
         const deleteBtn =
             document.createElement("button");
 
         deleteBtn.textContent =
             "Delete";
-
+        editBtn.addEventListener(
+            "click",
+            () => editTarget(index)
+        );
         deleteBtn.addEventListener(
             "click",
             () => deleteTarget(index)
         );
+        div.appendChild(editBtn);
 
         div.appendChild(deleteBtn);
 
