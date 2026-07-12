@@ -105,7 +105,15 @@ function deleteTarget(index) {
 
     updateUI();
 }
-
+function editTarget(index) {
+    const target =
+    targets[index];
+    const newDomain =
+    prompt(
+        "Edit target name:",
+        target.domain
+    );
+}
 function saveTargets() {
 
     localStorage.setItem(
