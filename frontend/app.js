@@ -113,6 +113,23 @@ function editTarget(index) {
         "Edit target name:",
         target.domain
     );
+    const trimmedDomain =
+    newDomain.trim();
+
+if (trimmedDomain === "") {
+
+    alert(
+        "Target name cannot be empty."
+    );
+
+    return;
+}
+    target.domain =
+    trimmedDomain;
+
+saveTargets();
+
+updateUI();
 }
 function saveTargets() {
 
