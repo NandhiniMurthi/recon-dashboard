@@ -1,4 +1,5 @@
 let targets = [];
+let editingIndex = -1;
 const addTargetBtn =
     document.getElementById("addTargetBtn");
 const clearTargetsBtn =
@@ -13,6 +14,20 @@ const searchInput =
 
 const filterStatus =
     document.getElementById("filterStatus");
+const editForm =
+    document.getElementById("editForm");
+
+const editDomainInput =
+    document.getElementById("editDomainInput");
+
+const editStatusInput =
+    document.getElementById("editStatusInput");
+
+const saveEditBtn =
+    document.getElementById("saveEditBtn");
+
+const cancelEditBtn =
+    document.getElementById("cancelEditBtn");
 
 addTargetBtn.addEventListener(
     "click",
@@ -106,30 +121,20 @@ function deleteTarget(index) {
     updateUI();
 }
 function editTarget(index) {
+
+    editingIndex = index;
+
     const target =
-    targets[index];
-    const newDomain =
-    prompt(
-        "Edit target name:",
-        target.domain
-    );
-    const trimmedDomain =
-    newDomain.trim();
+        targets[index];
 
-if (trimmedDomain === "") {
+    editDomainInput.value =
+        target.domain;
 
-    alert(
-        "Target name cannot be empty."
-    );
+    editStatusInput.value =
+        target.status;
 
-    return;
-}
-    target.domain =
-    trimmedDomain;
-
-saveTargets();
-
-updateUI();
+    editForm.style.display =
+        "block";
 }
 function saveTargets() {
 
