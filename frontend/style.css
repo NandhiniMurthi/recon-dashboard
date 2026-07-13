@@ -141,3 +141,33 @@ button:hover {
     color: green;
     font-weight: bold;
 }
+#editForm {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+    border: 1px solid #ddd;
+
+}
+
+#editForm input,
+#editForm select {
+
+    width: 100%;
+
+    margin-bottom: 10px;
+
+    padding: 10px;
+
+}
+
+#editForm button {
+
+    margin-right: 10px;
+
+}
