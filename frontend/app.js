@@ -173,18 +173,13 @@ function saveEditedTarget() {
 
     updateUI();
 
-    editForm.style.display =
-        "none";
-
-    editingIndex = -1;
+    closeEditForm();
 }
 
 function cancelEdit() {
 
-    editForm.style.display =
-        "none";
+    closeEditForm();
 
-    editingIndex = -1;
 }
 
 function closeEditForm() {
