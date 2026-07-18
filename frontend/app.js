@@ -180,6 +180,15 @@ function saveEditedTarget() {
 
     editingIndex = -1;
 }
+
+function cancelEdit() {
+
+    editForm.style.display =
+        "none";
+
+    editingIndex = -1;
+}
+
 function saveTargets() {
 
     localStorage.setItem(
