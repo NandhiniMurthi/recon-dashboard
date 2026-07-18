@@ -4,14 +4,12 @@ const addTargetBtn =
     document.getElementById("addTargetBtn");
 const clearTargetsBtn =
     document.getElementById("clearTargetsBtn");
-
 const lastUpdated =
     document.getElementById("lastUpdated");
 const message =
     document.getElementById("message");
 const searchInput =
     document.getElementById("searchInput");
-
 const filterStatus =
     document.getElementById("filterStatus");
 const editForm =
@@ -335,6 +333,8 @@ div.innerHTML = `
             "click",
             () => deleteTarget(index)
         );
+        editBtn.classList.add("action-btn");
+        deleteBtn.classList.add("action-btn");
         div.appendChild(editBtn);
 
         div.appendChild(deleteBtn);
