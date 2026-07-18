@@ -187,6 +187,15 @@ function cancelEdit() {
     editingIndex = -1;
 }
 
+function closeEditForm() {
+
+    editForm.style.display =
+        "none";
+
+    editingIndex = -1;
+
+}
+
 function saveTargets() {
 
     localStorage.setItem(
