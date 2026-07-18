@@ -46,7 +46,15 @@ filterStatus.addEventListener(
     "change",
     renderTargets
 );
+saveEditBtn.addEventListener(
+    "click",
+    saveEditedTarget
+);
 
+cancelEditBtn.addEventListener(
+    "click",
+    cancelEdit
+);
 function addTarget() {
 
     const domainInput =
@@ -135,6 +143,42 @@ function editTarget(index) {
 
     editForm.style.display =
         "block";
+}
+function saveEditedTarget() {
+
+    if (editingIndex === -1) {
+        return;
+    }
+
+    const domain =
+        editDomainInput.value.trim();
+
+    const status =
+        editStatusInput.value;
+
+    if (domain === "") {
+
+        alert(
+            "Target name cannot be empty."
+        );
+
+        return;
+    }
+
+    targets[editingIndex].domain =
+        domain;
+
+    targets[editingIndex].status =
+        status;
+
+    saveTargets();
+
+    updateUI();
+
+    editForm.style.display =
+        "none";
+
+    editingIndex = -1;
 }
 function saveTargets() {
 
