@@ -162,12 +162,28 @@ function saveEditedTarget() {
 
         return;
     }
+    const duplicateTarget =
+    targets.some((target, index) =>
+        index !== editingIndex &&
+        target.domain.toLowerCase() ===
+        domain.toLowerCase()
+    );
 
+if (duplicateTarget) {
+
+    alert("Target already exists.");
+
+    return;
+
+}
     targets[editingIndex].domain =
         domain;
 
     targets[editingIndex].status =
         status;
+    targets.sort((a, b) =>
+    a.domain.localeCompare(b.domain)
+);
 
     saveTargets();
 
@@ -218,8 +234,6 @@ function updateLastUpdated() {
     lastUpdated.textContent =
         "Last Updated: " +
         now.toLocaleString();
-
-}
 }
 function clearTargets() {
 
