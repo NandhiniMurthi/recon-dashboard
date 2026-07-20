@@ -99,8 +99,7 @@ if (targetExists) {
     targets.sort((a, b) =>
     a.domain.localeCompare(b.domain)
 );
-    saveTargets();
-    updateLastUpdated();
+    
     domainInput.value = "";
     message.textContent =
     "Target added successfully!";
@@ -108,7 +107,9 @@ if (targetExists) {
     message.textContent = "";
     }, 3000);
 
-    renderTargets();
+    saveTargets();
+
+    updateUI();
 }
 
 function deleteTarget(index) {
@@ -186,10 +187,8 @@ if (duplicateTarget) {
 );
 
     saveTargets();
-
-    updateUI();
-
     closeEditForm();
+    updateUI();
 }
 
 function cancelEdit() {
@@ -245,9 +244,10 @@ function clearTargets() {
     }
 
     targets.length = 0;
-    saveTargets();
-    updateLastUpdated();
-    renderTargets();
+
+saveTargets();
+
+updateUI();
 }
 
 function renderTargets() {
@@ -360,6 +360,15 @@ div.innerHTML = `
         targetsList.appendChild(div);
     });
 }
+
+function updateUI() {
+
+    renderTargets();
+
+    updateLastUpdated();
+
+}
+
 loadTargets();
 
-renderTargets();
+updateUI();
