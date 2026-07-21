@@ -76,35 +76,35 @@ function addTarget() {
         return;
     }
     const targetExists =
-    targets.some(
-        target =>
-            target.domain.toLowerCase() ===
-            domain.toLowerCase()
-    );
+        targets.some(
+            target =>
+                target.domain.toLowerCase() ===
+                domain.toLowerCase()
+        );
 
-if (targetExists) {
+    if (targetExists) {
 
-    alert(
-        "Target already exists."
-    );
+        alert(
+            "Target already exists."
+        );
 
-    return;
-}
+        return;
+    }
 
     targets.push({
-    domain: domain,
-    status: status,
-    dateAdded: new Date().toLocaleString()
-});
+        domain: domain,
+        status: status,
+        dateAdded: new Date().toLocaleString()
+    });
     targets.sort((a, b) =>
-    a.domain.localeCompare(b.domain)
-);
-    
+        a.domain.localeCompare(b.domain)
+    );
+
     domainInput.value = "";
     message.textContent =
-    "Target added successfully!";
+        "Target added successfully!";
     setTimeout(() => {
-    message.textContent = "";
+        message.textContent = "";
     }, 3000);
 
     saveTargets();
@@ -164,27 +164,27 @@ function saveEditedTarget() {
         return;
     }
     const duplicateTarget =
-    targets.some((target, index) =>
-        index !== editingIndex &&
-        target.domain.toLowerCase() ===
-        domain.toLowerCase()
-    );
+        targets.some((target, index) =>
+            index !== editingIndex &&
+            target.domain.toLowerCase() ===
+            domain.toLowerCase()
+        );
 
-if (duplicateTarget) {
+    if (duplicateTarget) {
 
-    alert("Target already exists.");
+        alert("Target already exists.");
 
-    return;
+        return;
 
-}
+    }
     targets[editingIndex].domain =
         domain;
 
     targets[editingIndex].status =
         status;
     targets.sort((a, b) =>
-    a.domain.localeCompare(b.domain)
-);
+        a.domain.localeCompare(b.domain)
+    );
 
     saveTargets();
     closeEditForm();
@@ -245,9 +245,9 @@ function clearTargets() {
 
     targets.length = 0;
 
-saveTargets();
+    saveTargets();
 
-updateUI();
+    updateUI();
 }
 
 function renderTargets() {
@@ -260,45 +260,84 @@ function renderTargets() {
 
     const activeCount =
         document.getElementById("activeCount");
+    const pendingCount =
+        document.getElementById("pendingCount");
+
+    const completedCount =
+        document.getElementById("completedCount");
+
+    const completionPercentage =
+        document.getElementById("completionPercentage");
+
+    const todayCount =
+        document.getElementById("todayCount");
     const resultCount =
-    document.getElementById("resultCount");
+        document.getElementById("resultCount");
 
     const searchText =
-    searchInput.value.toLowerCase();
+        searchInput.value.toLowerCase();
 
     const selectedStatus =
-    filterStatus.value;
+        filterStatus.value;
 
     targetsList.innerHTML = "";
     const filteredTargets =
-    targets.filter(target => {
+        targets.filter(target => {
 
-        const matchesSearch =
-            target.domain
-                .toLowerCase()
-                .includes(searchText);
+            const matchesSearch =
+                target.domain
+                    .toLowerCase()
+                    .includes(searchText);
 
-        const matchesStatus =
-            selectedStatus === "All" ||
-            target.status === selectedStatus;
+            const matchesStatus =
+                selectedStatus === "All" ||
+                target.status === selectedStatus;
 
-        return matchesSearch && matchesStatus;
-    });
+            return matchesSearch && matchesStatus;
+        });
 
     targetCount.textContent =
         targets.length;
     resultCount.textContent =
-    `Showing ${filteredTargets.length} of ${targets.length} targets`;
+        `Showing ${filteredTargets.length} of ${targets.length} targets`;
 
     const activeTargets =
-        targets.filter(
-            target => target.status === "Active"
-        );
+        targets.filter(target => target.status === "Active");
+
+    const pendingTargets =
+        targets.filter(target => target.status === "Pending");
+
+    const completedTargets =
+        targets.filter(target => target.status === "Completed");
 
     activeCount.textContent =
         activeTargets.length;
+    pendingCount.textContent =
+        pendingTargets.length;
 
-    if (filteredTargets.length === 0){
+    completedCount.textContent =
+        completedTargets.length;
+    const completion =
+        targets.length === 0
+            ? 0
+            : Math.round(
+                (completedTargets.length / targets.length) * 100
+            );
+
+    completionPercentage.textContent =
+        `${completion}%`;
+    const today =
+        new Date().toLocaleDateString();
+
+    const addedToday =
+        targets.filter(target =>
+            target.dateAdded.startsWith(today)
+        );
+
+    todayCount.textContent =
+        `Added Today: ${addedToday.length}`;
+
+    if (filteredTargets.length === 0) {
 
         targetsList.innerHTML = `
             <div class="empty-state">
@@ -312,15 +351,15 @@ function renderTargets() {
 
     filteredTargets.forEach((target) => {
 
-    const index =
-        targets.indexOf(target);
+        const index =
+            targets.indexOf(target);
 
         const div =
-    document.createElement("div");
+            document.createElement("div");
 
-div.className = "target";
+        div.className = "target";
 
-div.innerHTML = `
+        div.innerHTML = `
     <div class="target-info">
         <strong>${target.domain}</strong>
 

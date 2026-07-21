@@ -25,8 +25,23 @@
 
         <div class="card">
             <h3>Findings</h3>
-            <p>0</p>
+            <p id="findingsCount">0</p>
         </div>
+        <div class="card">
+            <h3>Pending</h3>
+            <p id="pendingCount">0</p>
+        </div>
+        
+        <div class="card">
+            <h3>Completed</h3>
+            <p id="completedCount">0</p>
+        </div>
+        
+        <div class="card">
+            <h3>Completion</h3>
+            <p id="completionPercentage">0%</p>
+        </div>
+        
     </section>
 
     <section>
@@ -71,7 +86,7 @@
         Cancel
     </button>
 
-</div>
+    </div>
     <section>
 
     <div class="search-filter">
@@ -89,7 +104,9 @@
         </select>
 
     </div>
-
+    <p id="todayCount">
+        Added Today: 0
+    </p>
     <p id="resultCount">
         Showing 0 of 0 targets
     </p>
