@@ -17,8 +17,9 @@ body {
 header {
     background-color: #222;
     color: white;
-    padding: 20px;
+    padding: 24px;
     border-radius: 10px;
+    margin-bottom: 25px;
 }
 
 .stats {
@@ -31,8 +32,14 @@ header {
 .card {
     padding: 20px;
     border-radius: 10px;
+    background: white;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 button {
@@ -41,15 +48,8 @@ button {
     cursor: pointer;
 }
 
-.target {
-    background: white;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 10px;
-}
-
 section {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 h1,
 h2,
@@ -67,10 +67,14 @@ button {
     color: white;
     border: none;
     border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
 }
 
 button:hover {
-    opacity: 0.9;
+    background: #0064d6;
+    transform: translateY(-1px);
 }
 .empty-state {
     padding: 20px;
@@ -92,6 +96,7 @@ button:hover {
 .search-filter select {
     padding: 10px;
     border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
 #resultCount {
@@ -113,11 +118,15 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     background: white;
-    padding: 15px;
-    margin-top: 10px;
+    padding: 18px;
+    margin-top: 12px;
     border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
 }
-
+.target:hover {
+    transform: translateY(-2px);
+}
 .target-info {
     display: flex;
     flex-direction: column;
@@ -152,28 +161,20 @@ button:hover {
     font-weight: bold;
 }
 #editForm {
-
     background: white;
-
     padding: 20px;
-
     border-radius: 10px;
-
     margin-top: 20px;
-
     border: 1px solid #ddd;
-
 }
 
 #editForm input,
 #editForm select {
-
     width: 100%;
-
     margin-bottom: 10px;
-
     padding: 10px;
-
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 #editForm button {
@@ -201,9 +202,7 @@ button:hover {
 @media (max-width: 768px) {
 
     .stats {
-
         grid-template-columns: 1fr;
-
     }
     .add-target-form,
     .search-filter {
@@ -211,6 +210,20 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 12px;
-
+    }
+    .target {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    }
+    .target button {
+    width: 100%;
+    }
 }
+.add-target-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
