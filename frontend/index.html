@@ -1,141 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recon Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
-    <header>
-        <h1>Recon Dashboard</h1>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Recon Dashboard</h1>
+        </header>
 
-    <section class="stats">
-        <div class="card">
-            <h3>Targets</h3>
-            <p id="targetCount"></p>
+        <section class="stats">
+            <div class="card">
+                <h3>Targets</h3>
+                <p id="targetCount"></p>
+            </div>
+
+            <div class="card">
+                <h3>Active</h3>
+                <p id="activeCount">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Findings</h3>
+                <p id="findingsCount">0</p>
+            </div>
+            <div class="card">
+                <h3>Pending</h3>
+                <p id="pendingCount">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Completed</h3>
+                <p id="completedCount">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Completion</h3>
+                <p id="completionPercentage">0%</p>
+            </div>
+
+        </section>
+
+        <section>
+            <div class="add-target-form">
+                <input type="text" id="domainInput" placeholder="Enter domain">
+                <select id="statusInput">
+                    <option value="Active">Active</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+
+                <button id="addTargetBtn">
+                    Add Target
+                </button>
+                <p id="message"></p>
+            </div>
+        </section>
+        <div id="editForm" style="display: none;">
+
+            <h3>Edit Target</h3>
+
+            <input type="text" id="editDomainInput" placeholder="Domain">
+
+            <select id="editStatusInput">
+                <option value="Active">Active</option>
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+            </select>
+
+            <button id="saveEditBtn">
+                Save
+            </button>
+
+            <button id="cancelEditBtn">
+                Cancel
+            </button>
+
         </div>
+        <section>
 
-        <div class="card">
-            <h3>Active</h3>
-            <p id="activeCount">0</p>
-        </div>
+            <div class="search-filter">
 
-        <div class="card">
-            <h3>Findings</h3>
-            <p id="findingsCount">0</p>
-        </div>
-        <div class="card">
-            <h3>Pending</h3>
-            <p id="pendingCount">0</p>
-        </div>
-        
-        <div class="card">
-            <h3>Completed</h3>
-            <p id="completedCount">0</p>
-        </div>
-        
-        <div class="card">
-            <h3>Completion</h3>
-            <p id="completionPercentage">0%</p>
-        </div>
-        
-    </section>
+                <input type="text" id="searchInput" placeholder="Search by domain">
 
-    <section>
-        <div class="add-target-form">
-    <input
-        type="text"
-        id="domainInput"
-        placeholder="Enter domain"
-    >
-    <select id="statusInput">
-    <option value="Active">Active</option>
-    <option value="Pending">Pending</option>
-    <option value="Completed">Completed</option>
-    </select>
+                <select id="filterStatus">
+                    <option value="All">All</option>
+                    <option value="Active">Active</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
 
-    <button id="addTargetBtn">
-        Add Target
-    </button>
-            <p id="message"></p>
-        </div>
-    </section>
-    <div id="editForm" style="display: none;">
+            </div>
+            <p id="todayCount">
+                Added Today: 0
+            </p>
+            <p id="resultCount">
+                Showing 0 of 0 targets
+            </p>
+            <button id="clearTargetsBtn">
+                Clear All Targets
+            </button>
 
-    <h3>Edit Target</h3>
+            <p id="lastUpdated">
+                Last Updated: Never
+            </p>
 
-    <input
-        type="text"
-        id="editDomainInput"
-        placeholder="Domain">
+        </section>
 
-    <select id="editStatusInput">
-        <option value="Active">Active</option>
-        <option value="Pending">Pending</option>
-        <option value="Completed">Completed</option>
-    </select>
+        <section>
+            <h2>Targets</h2>
 
-    <button id="saveEditBtn">
-        Save
-    </button>
+            <div id="targetsList"></div>
+        </section>
 
-    <button id="cancelEditBtn">
-        Cancel
-    </button>
+        <section>
+            <h2>Recent Activity</h2>
 
-    </div>
-    <section>
+            <div id="activityLog" class="activity-log">
+                <div class="empty-state">
+                    No recent activity.
+                </div>
+            </div>
+        </section>
 
-    <div class="search-filter">
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search by domain">
-
-        <select id="filterStatus">
-            <option value="All">All</option>
-            <option value="Active">Active</option>
-            <option value="Pending">Pending</option>
-            <option value="Completed">Completed</option>
-        </select>
-
-    </div>
-    <p id="todayCount">
-        Added Today: 0
-    </p>
-    <p id="resultCount">
-        Showing 0 of 0 targets
-    </p>
-    <button id="clearTargetsBtn">
-    Clear All Targets
-    </button>
-
-    <p id="lastUpdated">
-    Last Updated: Never
-    </p>
-
-    </section>
-
-    <section>
-        <h2>Targets</h2>
-
-        <div id="targetsList"></div>
-    </section>
-
-    <section>
-        <h2>Recent Activity</h2>
-
-        <ul>
-            <li>Added example.com</li>
-            <li>Added test.com</li>
-        </ul>
-    </section>
-
-    <script src="app.js"></script>
+        <script src="app.js"></script>
     </div>
 </body>
+
 </html>

@@ -1,4 +1,5 @@
 let targets = [];
+let activities = [];
 let editingIndex = -1;
 const addTargetBtn =
     document.getElementById("addTargetBtn");
@@ -233,6 +234,20 @@ function updateLastUpdated() {
     lastUpdated.textContent =
         "Last Updated: " +
         now.toLocaleString();
+}
+function addActivity(message) {
+
+    activities.unshift({
+        message: message,
+        time: new Date().toLocaleString()
+    });
+
+    if (activities.length > 10) {
+        activities.pop();
+    }
+
+    renderActivityLog();
+
 }
 function clearTargets() {
 
