@@ -267,10 +267,14 @@ function renderActivityLog() {
     if (activities.length === 0) {
 
         activityLog.innerHTML = `
-            <div class="empty-state">
-                No recent activity.
-            </div>
-        `;
+<div class="empty-state">
+
+<h3>No Recent Activity</h3>
+
+<p>Your recent actions will appear here.</p>
+
+</div>
+`;
 
         return;
 
@@ -342,6 +346,76 @@ function exportTargets() {
 
 }
 
+function updateDashboardInsights() {
+
+    const targetCount =
+        document.getElementById("targetCount");
+
+    const activeCount =
+        document.getElementById("activeCount");
+
+    const pendingCount =
+        document.getElementById("pendingCount");
+
+    const completedCount =
+        document.getElementById("completedCount");
+
+    const completionPercentage =
+        document.getElementById("completionPercentage");
+
+    const todayCount =
+        document.getElementById("todayCount");
+
+    const activeTargets =
+        targets.filter(target =>
+            target.status === "Active"
+        );
+
+    const pendingTargets =
+        targets.filter(target =>
+            target.status === "Pending"
+        );
+
+    const completedTargets =
+        targets.filter(target =>
+            target.status === "Completed"
+        );
+
+    targetCount.textContent =
+        targets.length;
+
+    activeCount.textContent =
+        activeTargets.length;
+
+    pendingCount.textContent =
+        pendingTargets.length;
+
+    completedCount.textContent =
+        completedTargets.length;
+
+    const completion =
+        targets.length === 0
+            ? 0
+            : Math.round(
+                (completedTargets.length / targets.length) * 100
+            );
+
+    completionPercentage.textContent =
+        `${completion}%`;
+
+    const today =
+        new Date().toLocaleDateString();
+
+    const addedToday =
+        targets.filter(target =>
+            target.dateAdded.startsWith(today)
+        );
+
+    todayCount.textContent =
+        `Added Today: ${addedToday.length}`;
+
+}
+
 function renderTargets() {
 
     const targetsList =
@@ -393,50 +467,30 @@ function renderTargets() {
     resultCount.textContent =
         `Showing ${filteredTargets.length} of ${targets.length} targets`;
 
-    const activeTargets =
-        targets.filter(target => target.status === "Active");
-
-    const pendingTargets =
-        targets.filter(target => target.status === "Pending");
-
-    const completedTargets =
-        targets.filter(target => target.status === "Completed");
-
-    activeCount.textContent =
-        activeTargets.length;
-    pendingCount.textContent =
-        pendingTargets.length;
-
-    completedCount.textContent =
-        completedTargets.length;
-    const completion =
-        targets.length === 0
-            ? 0
-            : Math.round(
-                (completedTargets.length / targets.length) * 100
-            );
-
-    completionPercentage.textContent =
-        `${completion}%`;
-    const today =
-        new Date().toLocaleDateString();
-
-    const addedToday =
-        targets.filter(target =>
-            target.dateAdded.startsWith(today)
-        );
-
-    todayCount.textContent =
-        `Added Today: ${addedToday.length}`;
+    // Update dashboard insights (use single shared function)
+    updateDashboardInsights();
 
     if (filteredTargets.length === 0) {
 
-        targetsList.innerHTML = `
+        if (targets.length === 0) {
+
+            targetsList.innerHTML = `
             <div class="empty-state">
-                No targets added yet.
-                Add your first target.
+                <h3>No Targets Found</h3>
+                <p>Click "Add Target" to start tracking your first target.</p>
             </div>
         `;
+
+        } else {
+
+            targetsList.innerHTML = `
+            <div class="empty-state">
+                <h3>No Matching Targets</h3>
+                <p>Try changing the search text or filter.</p>
+            </div>
+        `;
+
+        }
 
         return;
     }
