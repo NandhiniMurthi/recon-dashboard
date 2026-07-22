@@ -109,7 +109,7 @@ function addTarget() {
     }, 3000);
 
     saveTargets();
-
+    addActivity(`Target Added: ${domain}`);
     updateUI();
 }
 
@@ -121,7 +121,8 @@ function deleteTarget(index) {
     if (!confirmDelete) {
         return;
     }
-
+    const deletedTarget =
+    targets[index].domain;
     targets.splice(index, 1);
 
     saveTargets();
@@ -188,6 +189,7 @@ function saveEditedTarget() {
     );
 
     saveTargets();
+    addActivity(`Target Edited: ${domain}`);
     closeEditForm();
     updateUI();
 }
@@ -247,6 +249,42 @@ function addActivity(message) {
     }
 
     renderActivityLog();
+
+}
+function renderActivityLog() {
+
+    const activityLog =
+        document.getElementById("activityLog");
+
+    activityLog.innerHTML = "";
+
+    if (activities.length === 0) {
+
+        activityLog.innerHTML = `
+            <div class="empty-state">
+                No recent activity.
+            </div>
+        `;
+
+        return;
+
+    }
+
+    activities.forEach(activity => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "target";
+
+        div.innerHTML = `
+            <strong>${activity.message}</strong>
+            <small>${activity.time}</small>
+        `;
+
+        activityLog.appendChild(div);
+
+    });
 
 }
 function clearTargets() {
