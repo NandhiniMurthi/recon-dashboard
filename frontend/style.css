@@ -242,3 +242,7 @@ button:hover {
     color: gray;
     margin-top: 4px;
 }
+
+#exportTargetsBtn {
+    margin-left: 10px;
+}

@@ -5,6 +5,8 @@ const addTargetBtn =
     document.getElementById("addTargetBtn");
 const clearTargetsBtn =
     document.getElementById("clearTargetsBtn");
+const exportTargetsBtn =
+    document.getElementById("exportTargetsBtn");
 const lastUpdated =
     document.getElementById("lastUpdated");
 const message =
@@ -35,6 +37,10 @@ addTargetBtn.addEventListener(
 clearTargetsBtn.addEventListener(
     "click",
     clearTargets
+);
+exportTargetsBtn.addEventListener(
+    "click",
+    exportTargets
 );
 searchInput.addEventListener(
     "input",
@@ -122,7 +128,7 @@ function deleteTarget(index) {
         return;
     }
     const deletedTarget =
-    targets[index].domain;
+        targets[index].domain;
     targets.splice(index, 1);
 
     saveTargets();
@@ -301,6 +307,39 @@ function clearTargets() {
     saveTargets();
 
     updateUI();
+}
+function exportTargets() {
+
+    if (targets.length === 0) {
+
+        alert("No targets to export.");
+
+        return;
+
+    }
+
+    const jsonData =
+        JSON.stringify(targets, null, 2);
+
+    const blob =
+        new Blob([jsonData], {
+            type: "application/json"
+        });
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    link.download = "targets.json";
+
+    link.click();
+
+    URL.revokeObjectURL(url);
+
 }
 
 function renderTargets() {
