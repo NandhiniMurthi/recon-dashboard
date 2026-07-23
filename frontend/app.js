@@ -132,7 +132,7 @@ function deleteTarget(index) {
     targets.splice(index, 1);
 
     saveTargets();
-
+    addActivity(`Target Deleted: ${deletedTarget}`);
     updateUI();
 }
 function editTarget(index) {
@@ -223,6 +223,14 @@ function saveTargets() {
     );
 
 }
+function saveActivities() {
+
+    localStorage.setItem(
+        "activities",
+        JSON.stringify(activities)
+    );
+
+}
 function loadTargets() {
 
     const savedTargets =
@@ -234,6 +242,19 @@ function loadTargets() {
             JSON.parse(savedTargets);
 
     }
+}
+function loadActivities() {
+
+    const savedActivities =
+        localStorage.getItem("activities");
+
+    if (savedActivities) {
+
+        activities =
+            JSON.parse(savedActivities);
+
+    }
+
 }
 function updateLastUpdated() {
 
@@ -253,6 +274,7 @@ function addActivity(message) {
     if (activities.length > 10) {
         activities.pop();
     }
+    saveActivities();
 
     renderActivityLog();
 
@@ -555,5 +577,6 @@ function updateUI() {
 }
 
 loadTargets();
-
+loadActivities();
 updateUI();
+renderActivityLog();
