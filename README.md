@@ -1,14 +1,16 @@
-# recon-dashboard
-A full-stack web application for organizing reconnaissance targets, subdomains, technologies, screenshots, and findings.
+# Recon Dashboard
+A responsive reconnaissance dashboard built with HTML, CSS, and Vanilla JavaScript for managing reconnaissance targets during security assessments.
 
-# Goals
-Manage reconnaissance targets
-Track subdomains
-Store technology fingerprints
-Organize screenshots
-Record findings and notes
-Learn full-stack development
+This project was developed as part of a structured learning journey to understand professional frontend development, Git workflows, and software engineering best practices before moving to backend development.
 
+The application allows users to create, edit, delete, search, filter, and organize reconnaissance targets while storing data locally using the browser's Local Storage.
+
+## Project Goals
+- Manage reconnaissance targets efficiently
+- Organize reconnaissance data in a centralized dashboard
+- Learn frontend development using HTML, CSS, and JavaScript
+- Practice professional Git and GitHub workflows
+- Prepare the project for backend integration using Node.js and SQLite
 # Tech Stack
 
 ### Frontend:
@@ -28,11 +30,40 @@ Learn full-stack development
 
 ## Features
 
-- Target Management
-- Subdomain Tracking
-- Technology Tracking
-- Screenshot Organization
-- Findings Management
+### Target Management
+- Add new reconnaissance targets
+- Edit existing targets
+- Delete targets
+- Prevent duplicate entries
+- Input validation
+
+### Search & Filtering
+- Search targets by domain
+- Filter targets by status
+- Dynamic result count
+
+### Dashboard Insights
+- Total targets
+- Active targets
+- Pending targets
+- Completed targets
+- Completion percentage
+- Targets added today
+
+### Activity Tracking
+- Activity log for target actions
+- Persistent activity history using Local Storage
+
+### Data Management
+- Automatic data persistence with Local Storage
+- Export targets as JSON
+- Clear all targets
+
+### User Experience
+- Responsive layout for desktop and mobile devices
+- Accessible form controls
+- Improved empty states
+- Clean and consistent UI
 
 ## Roadmap
 
