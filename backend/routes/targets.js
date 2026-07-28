@@ -15,3 +15,14 @@ router.get("/", (request, response) => {
 });
 
 module.exports = router;
+
+router.post("/", (request, response) => {
+    const newTarget = request.body;
+
+    console.log("Received target:", newTarget);
+
+    response.status(201).json({
+        message: "Target received successfully!",
+        target: newTarget
+    });
+});
