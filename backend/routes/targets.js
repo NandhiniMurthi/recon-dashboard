@@ -1,28 +1,43 @@
 const express = require("express");
-
+const database = require("../database/connection");
 const router = express.Router();
 
 router.get("/", (request, response) => {
-    const targets = [
-        {
-            id: 1,
-            domain: "example.com",
-            status: "Active"
-        }
-    ];
+    const query = "SELECT * FROM targets";
 
-    response.json(targets);
+    database.all(query, (error, rows) => {
+        if (error) {
+            return response.status(500).json({
+                message: "Failed to fetch targets."
+            });
+        }
+
+        response.json(rows);
+    });
 });
 
 module.exports = router;
 
 router.post("/", (request, response) => {
-    const newTarget = request.body;
+    const { domain, status } = request.body;
 
-    console.log("Received target:", newTarget);
+    const createdAt = new Date().toISOString();
 
-    response.status(201).json({
-        message: "Target received successfully!",
-        target: newTarget
+    const query = `
+        INSERT INTO targets (domain, status, createdAt)
+        VALUES (?, ?, ?)
+    `;
+
+    database.run(query, [domain, status, createdAt], function (error) {
+        if (error) {
+            return response.status(500).json({
+                message: "Failed to create target."
+            });
+        }
+
+        response.status(201).json({
+            message: "Target created successfully!",
+            id: this.lastID
+        });
     });
 });

@@ -1,5 +1,6 @@
 const express = require("express");
-
+const database = require("./database/connection");
+require("./database/schema");
 const app = express();
 app.use(express.json());
 const targetRoutes = require("./routes/targets");
