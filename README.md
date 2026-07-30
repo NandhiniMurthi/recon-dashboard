@@ -111,3 +111,11 @@ cd backend
 npm install
 npm start
 ```
+
+## Environment Variables
+
+Create a `.env` file inside the `backend` folder.
+
+```env
+PORT=3000
+```
