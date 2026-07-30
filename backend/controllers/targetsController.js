@@ -36,7 +36,37 @@ function createTarget(request, response) {
         });
     });
 }
+function updateTarget(request, response) {
+    const { id } = request.params;
+    const { domain, status } = request.body;
+
+    const query = `
+        UPDATE targets
+        SET domain = ?, status = ?
+        WHERE id = ?
+    `;
+
+    database.run(query, [domain, status, id], function (error) {
+        if (error) {
+            return response.status(500).json({
+                message: "Failed to update target."
+            });
+        }
+
+        if (this.changes === 0) {
+            return response.status(404).json({
+                message: "Target not found."
+            });
+        }
+
+        response.json({
+            message: "Target updated successfully!"
+        });
+    });
+}
+
 module.exports = {
     getTargets,
-    createTarget
+    createTarget,
+    updateTarget
 };
