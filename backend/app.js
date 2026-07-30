@@ -1,3 +1,4 @@
+const cors = require("cors");
 require("dotenv").config();
 const express = require("express");
 const logger = require("./middleware/logger");
@@ -6,6 +7,7 @@ const database = require("./config/database");
 require("./db/schema");
 const errorHandler = require("./middleware/errorHandler");
 const app = express();
+app.use(cors());
 app.use(logger);
 app.use(express.json());
 
