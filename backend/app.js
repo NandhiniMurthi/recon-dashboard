@@ -1,10 +1,10 @@
+require("dotenv").config();
 const express = require("express");
-const database = require("./database/connection");
-require("./database/schema");
+const targetRoutes = require("./routes/targets");
+const database = require("./config/database");require("./database/schema");
 const app = express();
 app.use(express.json());
-const targetRoutes = require("./routes/targets");
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get("/", (request, response) => {
     response.send("Recon Dashboard Backend is running!");

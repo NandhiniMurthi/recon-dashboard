@@ -1,5 +1,4 @@
-const database = require("../database/connection");
-
+const database = require("../config/database");
 function getTargets(request, response) {
     const query = "SELECT * FROM targets";
 

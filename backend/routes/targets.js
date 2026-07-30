@@ -1,6 +1,5 @@
 const { getTargets, createTarget, updateTarget, deleteTarget } = require("../controllers/targetsController");
 const express = require("express");
-const database = require("../database/connection");
 const router = express.Router();
 
 router.get("/", getTargets);

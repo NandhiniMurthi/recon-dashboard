@@ -1,5 +1,4 @@
-const database = require("./connection");
-
+const database = require("../config/database");
 const createTargetsTable = `
     CREATE TABLE IF NOT EXISTS targets (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
