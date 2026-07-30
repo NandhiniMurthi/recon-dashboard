@@ -15,7 +15,17 @@ function getTargets(request, response) {
 }
 function createTarget(request, response) {
     const { domain, status } = request.body;
+    if (!domain || domain.trim() === "") {
+    return response.status(400).json({
+        message: "Domain is required."
+    });
+}
 
+if (!status || status.trim() === "") {
+    return response.status(400).json({
+        message: "Status is required."
+    });
+}
     const createdAt = new Date().toISOString();
 
     const query = `
