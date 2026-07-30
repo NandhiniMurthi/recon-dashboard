@@ -94,3 +94,20 @@ This project helps me strengthen my understanding of:
 - Git & GitHub Workflow
 - Project Architecture
 - Industry Development Practices
+
+## API Endpoints
+
+- GET /api/targets
+- POST /api/targets
+- PUT /api/targets/:id
+- DELETE /api/targets/:id
+
+Detailed API documentation is available in `backend/API.md`.
+
+## Running the Backend
+
+```bash
+cd backend
+npm install
+npm start
+```
