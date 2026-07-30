@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const targetRoutes = require("./routes/targets");
-const database = require("./config/database");require("./database/schema");
+const database = require("./config/database");require("./db/schema");
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 3000;
