@@ -1,6 +1,7 @@
 let targets = [];
 let activities = [];
 let editingIndex = -1;
+const API_URL = "https://recon-dashboard-wi17.onrender.com/api/targets";
 const addTargetBtn =
     document.getElementById("addTargetBtn");
 const clearTargetsBtn =
@@ -60,7 +61,7 @@ cancelEditBtn.addEventListener(
     "click",
     cancelEdit
 );
-function addTarget() {
+async function addTarget() {
 
     const domainInput =
         document.getElementById("domainInput");
@@ -98,11 +99,40 @@ function addTarget() {
         return;
     }
 
-    targets.push({
-        domain: domain,
-        status: status,
-        dateAdded: new Date().toLocaleString()
+    try {
+    const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            domain,
+            status
+        })
     });
+
+    if (!response.ok) {
+        const error = await response.json();
+        alert(error.message);
+        return;
+    }
+
+    domainInput.value = "";
+
+    await loadTargets();
+
+    addActivity(`Target Added: ${domain}`);
+
+    message.textContent = "Target added successfully!";
+
+    setTimeout(() => {
+        message.textContent = "";
+    }, 3000);
+
+} catch (error) {
+    console.error(error);
+    alert("Failed to add target.");
+}
     targets.sort((a, b) =>
         a.domain.localeCompare(b.domain)
     );
@@ -119,7 +149,7 @@ function addTarget() {
     updateUI();
 }
 
-function deleteTarget(index) {
+async function deleteTarget(index) {
 
     const confirmDelete =
         confirm("Are you sure you want to delete this target?");
@@ -127,13 +157,27 @@ function deleteTarget(index) {
     if (!confirmDelete) {
         return;
     }
-    const deletedTarget =
-        targets[index].domain;
-    targets.splice(index, 1);
+    const target = targets[index];
 
-    saveTargets();
-    addActivity(`Target Deleted: ${deletedTarget}`);
-    updateUI();
+try {
+    const response = await fetch(`${API_URL}/${target.id}`, {
+        method: "DELETE"
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        alert(error.message);
+        return;
+    }
+
+    addActivity(`Target Deleted: ${target.domain}`);
+
+    await loadTargets();
+
+} catch (error) {
+    console.error(error);
+    alert("Failed to delete target.");
+}
 }
 function editTarget(index) {
 
@@ -151,7 +195,7 @@ function editTarget(index) {
     editForm.style.display =
         "block";
 }
-function saveEditedTarget() {
+async function saveEditedTarget() {
 
     if (editingIndex === -1) {
         return;
@@ -185,21 +229,37 @@ function saveEditedTarget() {
         return;
 
     }
-    targets[editingIndex].domain =
-        domain;
+   const target = targets[editingIndex];
 
-    targets[editingIndex].status =
-        status;
-    targets.sort((a, b) =>
-        a.domain.localeCompare(b.domain)
-    );
+try {
+    const response = await fetch(`${API_URL}/${target.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            domain,
+            status
+        })
+    });
 
-    saveTargets();
+    if (!response.ok) {
+        const error = await response.json();
+        alert(error.message);
+        return;
+    }
+
     addActivity(`Target Edited: ${domain}`);
-    closeEditForm();
-    updateUI();
-}
 
+    closeEditForm();
+
+    await loadTargets();
+
+} catch (error) {
+    console.error(error);
+    alert("Failed to update target.");
+}
+}
 function cancelEdit() {
 
     closeEditForm();
@@ -231,16 +291,24 @@ function saveActivities() {
     );
 
 }
-function loadTargets() {
+async function loadTargets() {
+    try {
+        const response = await fetch(API_URL);
 
-    const savedTargets =
-        localStorage.getItem("targets");
+        if (!response.ok) {
+            throw new Error("Failed to load targets");
+        }
 
-    if (savedTargets) {
+        targets = await response.json();
 
-        targets =
-            JSON.parse(savedTargets);
+        targets.sort((a, b) =>
+            a.domain.localeCompare(b.domain)
+        );
 
+        updateUI();
+    } catch (error) {
+        console.error(error);
+        alert("Unable to load targets.");
     }
 }
 function loadActivities() {
@@ -429,9 +497,10 @@ function updateDashboardInsights() {
         new Date().toLocaleDateString();
 
     const addedToday =
-        targets.filter(target =>
-            target.dateAdded.startsWith(today)
-        );
+    targets.filter(target =>
+        target.createdAt &&
+        target.createdAt.startsWith(today)
+    );
 
     todayCount.textContent =
         `Added Today: ${addedToday.length}`;
@@ -536,7 +605,7 @@ function renderTargets() {
         </span>
 
         <small>
-            Added: ${target.dateAdded}
+            Added: ${target.createdAt}
         </small>
     </div>
 `;
@@ -578,5 +647,4 @@ function updateUI() {
 
 loadTargets();
 loadActivities();
-updateUI();
 renderActivityLog();
