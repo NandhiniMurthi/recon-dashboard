@@ -275,14 +275,7 @@ function closeEditForm() {
 
 }
 
-function saveTargets() {
 
-    localStorage.setItem(
-        "targets",
-        JSON.stringify(targets)
-    );
-
-}
 function saveActivities() {
 
     localStorage.setItem(
