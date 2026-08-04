@@ -119,3 +119,31 @@ Create a `.env` file inside the `backend` folder.
 ```env
 PORT=3000
 ```
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/recon-dashboard.git
+```
+
+Install backend dependencies
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file
+
+```env
+PORT=3000
+```
+
+Start the backend
+
+```bash
+npm start
+```
+
+Open `frontend/index.html` in your browser.
