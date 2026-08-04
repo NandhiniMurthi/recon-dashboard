@@ -293,6 +293,7 @@ async function loadTargets() {
         }
 
         targets = await response.json();
+        
 
         targets.sort((a, b) =>
             a.domain.localeCompare(b.domain)
