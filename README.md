@@ -147,3 +147,12 @@ npm start
 ```
 
 Open `frontend/index.html` in your browser.
+
+## Future Improvements
+
+- User authentication
+- Team collaboration
+- Automated reconnaissance integration
+- Activity history
+- File attachments
+- PostgreSQL support
